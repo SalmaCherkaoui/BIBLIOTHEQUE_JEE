@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>La liste des adherents</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+<div class="container">
+    <br><br><br>
+    <div>
+        <a class="text-success" th:href="@{'/adherent/create'}" >
+            <i class="fad fa-info-circle text-success"></i>
+            <b class="text-success">Ajouter un adhérent</b>
+        </a>
+    </div>
+    <br>
+    <div class="card">
+        <div th:if = "${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div class="card-header">La liste des adherents</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cin</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Numéro de téléphone</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="adherent:${adherents}">
+                    <td th:text="${adherent.id}"></td>
+                    <td th:text="${adherent.cin}"></td>
+                    <td th:text="${adherent.nom}"></td>
+                    <td th:text="${adherent.prenom}"></td>
+                    <td th:text="${adherent.numeroTelephone}"></td>
+                    <td th:text="${adherent.adresse}"></td>
+                    <td th:text="${adherent.email}"></td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{'/adherent/edit/'+${adherent.id}}" >Modifier</a>
+                        <a class="btn btn-secondary" th:href="@{'/adherent/detail/'+${adherent.id}}" >Détail</a>
+                        <a class="btn btn-danger" th:href="@{'/adherent/delete/'+${adherent.id}}" >Supprimer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${TitrePage}]]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+<br><br>
+    <div class = "container-fuild text-center">
+        <div><h2>[[${TitrePage}]]</h2></div>
+    </div>
+<br>
+    <form th:action ="@{/ressource/save}" method ="post" th:object ="${ressource}" style="max-width: 700px; margin: 0 auto;">
+        <div class = "border border-secondary rounded p-3">
+            <input type="hidden" th:field="*{id}" />
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Titre :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{titre}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Auteur :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{auteur}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Code barre :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{codeBarre}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Genre :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{genre}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Date de parution :</label>
+                <div class = "col-sm-8">
+                    <input type = "date" th:field = "*{dateDeParution}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Langue :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{langue}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Type de ressource :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{typeRessource}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Disponibilité :</label>
+                <div class = "col-sm-8">
+                    <input type = "number" th:field = "*{disponibilite}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Edition :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{edition}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Nombre exemplaire :</label>
+                <div class = "col-sm-8">
+                    <input type = "number" th:field = "*{nombreExemplaire}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Image :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{image}" class = "form-control" required minlength = "3" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Emplacement :</label>
+                <div class = "col-sm-8" th:object="${emplacements}">
+                    <select class="form-control" id="emplacement" name="emplacement">
+                        <option value="">Selectionner un emplacement</option>
+                        <option th:each="emplacement : ${emplacements}"
+                                th:value="${emplacement.id}"
+                                th:text="${emplacement}"></option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <a class="btn btn-secondary" type="button" th:href="@{'/ressource/index'}" >Annuler</a>
+                <button type="submit" class="btn btn-success m-2">Sauvegarder</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

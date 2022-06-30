@@ -1,0 +1,34 @@
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bibliothèque</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/ressource/index'}">Ressource</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/adherent/index'}">Adherent</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/bibliothecaire/index'}">Bibliothecaire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/emplacement/index'}">Emplacement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/emprunt/index'}">Emprunt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/exemplaire/index'}">Exemplaire</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                    <a class="nav-link mr-4" th:href="@{'/bibliothecaire/login'}">Se connecter</a> &nbsp; &nbsp;
+                    <!--<a class="nav-link" th:href="@{'/bibliothecaire/formRegister'}">Inscription</a>-->
+            </div>
+        </div>
+    </div>
+</nav>

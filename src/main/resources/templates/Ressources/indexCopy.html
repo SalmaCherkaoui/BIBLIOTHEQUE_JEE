@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>La liste des ressources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+<div class="container">
+    <br><br><br>
+    <div class="card">
+        <!-- <div th:if = "${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>-->
+        <div class="card-header">La liste des ressources</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Code barre</th>
+                    <th>Date de parution</th>
+                    <th>Langue</th>
+                    <th>Type de ressource</th>
+                    <th>Disponibilté</th>
+                    <th>Edition</th>
+                    <th>Nombre exemplaire</th>
+                    <th>Emplacement</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ressource:${ressources}">
+                    <td th:text="${ressource.id}"></td>
+                    <td th:text="${ressource.titre}"></td>
+                    <td th:text="${ressource.auteur}"></td>
+                    <td th:text="${ressource.codeBarre}"></td>
+                    <td th:text="${ressource.dateDeParution}"></td>
+                    <td th:text="${ressource.langue}"></td>
+                    <td th:text="${ressource.typeRessource}"></td>
+                    <td th:text="${ressource.disponibilite}"></td>
+                    <td th:text="${ressource.edition}"></td>
+                    <td th:text="${ressource.nombreExemplaire}"></td>
+                    <td th:text="${ressource.emplacement.toStringIndex()}"></td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{'/ressource/edit/'+${ressource.id}}" >Modifier</a>
+                        <a class="btn btn-secondary" th:href="@{'/ressource/detail/'+${ressource.id}}" >Détail</a>
+                        <a class="btn btn-danger" th:href="@{'/ressource/delete/'+${ressource.id}}" >Supprimer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <a class="btn btn-success" type="button" th:href="@{'/ressource/create'}" >Créer</a>
+    </div>
+</div>
+</body>
+</html>

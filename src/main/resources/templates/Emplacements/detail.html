@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${TitrePage}]]</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+  <div class="container">
+    <br><br><br>
+    <div class="card">
+        <div class="card-header">Les informations de l'emplacement</div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Thème</th>
+              <th>Etage</th>
+              <th>Ranger</th>
+              <th>Couleur</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td th:text="${emplacement.id}"></td>
+              <td th:text="${emplacement.theme}"></td>
+              <td th:text="${emplacement.etage}"></td>
+              <td th:text="${emplacement.ranger}"></td>
+              <td th:text="${emplacement.couleur}"></td>
+              <td>
+                <a class="btn btn-warning" th:href="@{'/emplacement/edit/'+${emplacement.id}}" >Modifier</a>
+                <a class="btn btn-danger" th:href="@{'/emplacement/delete/'+${emplacement.id}}" >Supprimer</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <div>
+      <a class="btn btn-secondary" th:href="@{'/emplacement/index/'}">Retour</a>
+    </div>
+  </div>
+</body>
+</html>

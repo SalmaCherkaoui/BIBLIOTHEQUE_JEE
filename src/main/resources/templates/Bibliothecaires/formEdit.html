@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${TitrePage}]]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+    <div class = "container-fuild text-center">
+        <div><h2>[[${TitrePage}]]</h2></div>
+    </div>
+    <form th:action ="@{/bibliothecaire/save}" method ="post" th:object ="${bibliothecaire}" style="max-width: 700px; margin: 0 auto;">
+        <div class = "border border-secondary rounded p-3">
+            <input type="hidden" th:field="*{id}" />
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Nom :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{nom}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Prénom :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{prenom}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Cin :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{cin}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Numéro de téléphone :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{numeroTelephone}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Adresse :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{adresse}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Email :</label>
+                <div class = "col-sm-8">
+                    <input type = "email" th:field = "*{email}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Mot de passe :</label>
+                <div class = "col-sm-8">
+                    <input type = "password" th:field = "*{motDePasse}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Type :</label>
+                <div class = "col-sm-8">
+                    <input type = "text" th:field = "*{type}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a class="btn btn-secondary" type="button" th:href="@{'/bibliothecaire/index'}" >Annuler</a>
+                <button type="submit" class="btn btn-success m-2">Sauvegarder</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

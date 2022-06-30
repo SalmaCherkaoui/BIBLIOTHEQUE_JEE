@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>La liste des bibliothécaires</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+<div class="container">
+    <br><br><br>
+    <div>
+        <a class="text-success" th:href="@{'/bibliothecaire/create'}" >
+            <i class="fad fa-info-circle text-success"></i>
+            <b class="text-success">Ajouter un bibliothecaire</b>
+        </a>
+    </div>
+    <br>
+    <div class="card">
+        <div th:if = "${message}" class = "alert alert-success text-center">
+            [[${message}]]
+        </div>
+        <div class="card-header">La liste des bibliothécaires</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Cin</th>
+                    <th>Numéro de téléphone</th>
+                    <th>Adresse</th>
+                    <th>Type</th>
+                    <th>Email</th>
+                    <th>Mot de passe</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bibliothecaire:${bibliothecaires}">
+                    <td th:text="${bibliothecaire.id}"></td>
+                    <td th:text="${bibliothecaire.nom}"></td>
+                    <td th:text="${bibliothecaire.prenom}"></td>
+                    <td th:text="${bibliothecaire.cin}"></td>
+                    <td th:text="${bibliothecaire.numeroTelephone}"></td>
+                    <td th:text="${bibliothecaire.adresse}"></td>
+                    <td th:text="${bibliothecaire.type}"></td>
+                    <td th:text="${bibliothecaire.email}"></td>
+                    <td th:text="${bibliothecaire.motDePasse}"></td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{'/bibliothecaire/edit/'+${bibliothecaire.id}}" >Modifier</a>
+                        <a class="btn btn-secondary" th:href="@{'/bibliothecaire/detail/'+${bibliothecaire.id}}" >Détail</a>
+                        <a class="btn btn-danger" th:href="@{'/bibliothecaire/delete/'+${bibliothecaire.id}}" >Supprimer</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

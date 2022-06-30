@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${TitrePage}]]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+    <div class = "container-fuild text-center">
+        <div><h2>[[${TitrePage}]]</h2></div>
+    </div>
+    <form th:action ="@{/emprunt/save}" method ="post" th:object ="${emprunt}" style="max-width: 700px; margin: 0 auto;">
+        <div class = "border border-secondary rounded p-3">
+            <input type="hidden" th:field="*{id}" />
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Date d'emprunt :</label>
+                <div class = "col-sm-8">
+                    <input type = "date" th:field = "*{dateEmprunt}" class = "form-control" required minlength = "3" maxlength="45" />
+                </div>
+            </div>
+            <!--<div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Date de retour :</label>
+                <div class = "col-sm-8">
+                    <input type = "date" th:field = "*{dateRetour}" class = "form-control" required minlength = "8" maxlength="45" />
+                </div>
+            </div>-->
+            <!--<div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Date effective :</label>
+                <div class = "col-sm-8">
+                    <input type = "date" th:field = "*{dateEffective}" class = "form-control" required minlength = "8" maxlength="45" />
+                </div>
+            </div>-->
+            <!--<div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Durée :</label>
+                <div class = "col-sm-8">
+                    <input type = "number" th:field = "*{duree}" class = "form-control" required minlength = "8" maxlength="45" />
+                </div>
+            </div>-->
+            <!--<div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Nombre de rappel :</label>
+                <div class = "col-sm-8">
+                    <input type = "number" th:field = "*{nombreRappel}" class = "form-control" required minlength = "8" maxlength="45" />
+                </div>
+            </div>-->
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Adherent :</label>
+                <div class = "col-sm-8" th:object="${adherents}">
+                    <select class="form-control" id="adherent" name="adherent">
+                        <option value="">Selectionner un adherent</option>
+                        <option th:each="adherent : ${adherents}"
+                                th:value="${adherent.id}"
+                                th:text="${adherent}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class = "form-group row">
+                <label class = "col-sm-4 col-form-label"> Exemplaire :</label>
+                <div class = "col-sm-8" th:object="${exemplaires}">
+                    <select class="form-control" id="exemplaire" name="exemplaire">
+                        <option value="">Selectionner un exemplaire</option>
+                        <option th:each="exemplaire : ${exemplaires}"
+                                th:value="${exemplaire.id}"
+                                th:text="${exemplaire}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a class="btn btn-secondary" type="button" th:href="@{'/emprunt/index'}" >Annuler</a>
+                <button type="submit" class="btn btn-success m-2">Sauvegarder</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

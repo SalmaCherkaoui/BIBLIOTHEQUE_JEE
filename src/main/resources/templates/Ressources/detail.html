@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${TitrePage}]]</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+<div th:replace="design/header :: navbar"></div>
+<!-- -->
+<br><br><br>
+  <div class="container">
+
+    <div>
+      <a class="text-secondary" th:href="@{'/ressource/index'}" >
+        <i class="fad fa-info-circle text-secondary"></i>
+        <b class="text-secondary">Retourner à la page d'accueil</b>
+      </a>
+    </div>
+
+    <br><br>
+    <div class="card">
+        <div class="card-header">Informations de la ressource</div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Titre</th>
+              <th>Auteur</th>
+              <th>Code barre</th>
+              <th>Date de parution</th>
+              <th>Langue</th>
+              <th>Type de ressource</th>
+              <th>Disponibilté</th>
+              <th>Edition</th>
+              <th>Nombre exemplaire</th>
+              <th>Image</th>
+              <th>Emplacement</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td th:text="${ressource.id}"></td>
+              <td th:text="${ressource.titre}"></td>
+              <td th:text="${ressource.auteur}"></td>
+              <td th:text="${ressource.codeBarre}"></td>
+              <td th:text="${ressource.dateDeParution}"></td>
+              <td th:text="${ressource.langue}"></td>
+              <td th:text="${ressource.typeRessource}"></td>
+              <td th:text="${ressource.disponibilite}"></td>
+              <td th:text="${ressource.edition}"></td>
+              <td th:text="${ressource.nombreExemplaire}"></td>
+              <td th:text="${ressource.image}"></td>
+              <td th:text="${ressource.emplacement}"></td>
+              <td>
+                <!--
+                <a class="btn btn-warning" th:href="@{'/ressource/edit/'+${ressource.id}}" >Modifier</a>
+                <a class="btn btn-danger" th:href="@{'/ressource/delete/'+${ressource.id}}" >Supprimer</a>
+                -->
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="text-center">
+          <a class="text-warning" th:href="@{'/ressource/edit/'+${ressource.id}}" >
+            <i class="fad fa-edit text-warning"></i>
+            <b class="text-warning">Modifier</b>
+          </a>&nbsp;&nbsp;&nbsp;
+          <a class="text-danger" th:href="@{'/ressource/delete/'+${ressource.id}}" >
+            <i class="fas fa-trash-alt text-danger"></i>
+            <b class="text-danger">Supprimer</b>
+          </a>
+          </div>
+        </div>
+    </div>
+    <!--
+    <div>
+      <a class="btn btn-secondary" th:href="@{'/ressource/index/'}">Retour</a>
+    </div>
+    -->
+  </div>
+</body>
+</html>
+
+<!--
+<h5 th:text="${ressource.titre}" class="card-title"></h5>
+<p th:text="'Auteur : '+${ressource.auteur}"class="card-text"></p>
+<p th:text="'Code barre : '${ressource.codeBarre}" class="card-text"></p>
+<p th:text="'Type : '+${ressource.typeRessource}"class="card-text"><small class="text-muted"></small></p>
+<p th:text="'Date de parution : '+${ressource.dateDeParution}"class="card-text"><small class="text-muted"></small></p>
+<p th:text="'Emplacement : '+${ressource.emplacement.toStringIndex()}"class="card-text"><small class="text-muted"></small></p>
+<p th:text="'Langue : '${ressource.langue}"class="card-text"><small class="text-muted"></small></p>
+<p th:text="'Disponibilité : '${ressource.disponibilite}"class="card-text"><small class="text-muted"></small></p>
+<p th:text="'Edition : '${ressource.edition}"class="card-text"><small class="text-muted"></small></p>
+<p th:text="'Nombre d'exemplaire : '${ressource.nombreExemplaire}"class="card-text"><small class="text-muted"></small></p>
+-->
